@@ -20,7 +20,9 @@ const resultsLimit = new Number(process.env.RESULTS_LIMIT) || 25;
 
 app.get('/', async (req, res) => {
 	try{
-		const products = await Product.find().limit(resultsLimit);
+		const products = await Product.find()
+		.limit(resultsLimit)
+		.sort('title');
 		res.json(products)
 	}catch(err){
 		res.json({message: err})
