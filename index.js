@@ -13,9 +13,7 @@ mongoose.connect(
 		useNewUrlParser : true,
 		useUnifiedTopology: true
 	}
-).catch(e){
-	console.log(e)
-}
+)
 
 //routes
 const resultsLimit = new Number(process.env.RESULTS_LIMIT) || 25;
@@ -30,20 +28,6 @@ app.get('/', async (req, res) => {
 		res.json({message: err})
 	}
 })
-
-//TO DELETE
-app.get('/feed', async (req, res) => {
-	const product = new Product({
-		title: "New title!"
-	})
-	try {
-		const savedProduct = await product.save();
-		res.json(savedProduct)
-	}catch(err){
-		console.log(err);
-	}
-})
-
 
 app.listen(
 	process.env.PORT, 
