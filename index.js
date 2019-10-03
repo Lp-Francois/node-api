@@ -13,7 +13,9 @@ mongoose.connect(
 		useNewUrlParser : true,
 		useUnifiedTopology: true
 	}
-);
+).catch(e){
+	console.log(e)
+}
 
 //routes
 const resultsLimit = new Number(process.env.RESULTS_LIMIT) || 25;
